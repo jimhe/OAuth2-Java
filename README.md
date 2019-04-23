@@ -1,33 +1,14 @@
-[![Sample Banner](views/Sample.png)][ss1]
-
-# OAuth2 - Java Sample App
-
-The [Intuit Developer team](https://developer.intuit.com) has written this OAuth 2.0 Sample App in Java to provide working examples of OAuth 2.0 concepts, and how to integrate with Intuit endpoints.
+# OAuth2 - Java Sample App for Review Board
 
 ## Table of Contents
 
-* [Requirements](#requirements)
 * [First Use Instructions](#first-use-instructions)
 * [Running the code](#running-the-code)
-* [Configuring the callback endpoint](#configuring-the-callback-endpoint)
-* [Getting the OAuth Tokens](#getting-the-oauth-tokens)
-* [Scope](#scope)
-* [Storing the Tokens](#storing-the-tokens)
-* [Discovery document](#discovery-document)
-
-
-## Requirements
-
-In order to successfully run this sample app you need a few things:
-
-1. Java 1.8
-2. A [developer.intuit.com](http://developer.intuit.com) account
-3. An app on [developer.intuit.com](http://developer.intuit.com) and the associated client id and client secret.
  
 ## First Use Instructions
 
 1. Clone the GitHub repo to your computer
-2. Fill in the [`application.properties`](src/main/resources/application.properties) file values (OAuth2AppClientId, OAuth2AppClientSecret) by copying over from the keys section for your app.
+2. Fill in the [`application.properties`](src/main/resources/application.properties) file values (OAuth2AppClientId) by copying over from the keys section for your app.
 
 ## Running the code
 
@@ -40,29 +21,135 @@ Once the sample app code is on your computer, you can do the following steps to 
 5. The oauth2 callback endpoint in the sample app is http://localhost:8080/oauth2redirect
 6. To run the code on a different port, uncomment and update server.port property in application.properties
 
-## Configuring the callback endpoint
-You'll have to set a Redirect URI in the Developer Portal ("Keys" section). With this app, the typical value would be http://localhost:8080/oauth2redirect, unless you host this sample app in a different way (if you were testing HTTPS, for example).
-
-Note: Using localhost and http will only work when developing, using the sandbox credentials. Once you use production credentials, you'll need to host your app over https.
-
-## Getting the OAuth Tokens
-
-The sample app supports the following flows:
-
-**Sign In With Intuit** - this flow requests OpenID only scopes.  Feel free to change the scopes being requested in `application.properties`.  After authorizing (or if the account you are using has already been authorized for this app), the redirect URL (`/oauth2redirect`) will parse the JWT ID token, and make an API call to the user information endpoint.
-
-**Connect To QuickBooks** - this flow requests non-OpenID scopes.  You will be able to make a QuickBooks API sample call (using the OAuth2 token) on the `/connected` landing page. Sample implementation for RefreshToken and RevokeToken is also available in that page.
-
-**Get App Now (Connect Handler)** - this flow requests both OpenID and non-OpenID scopes.  It simulates the request that would come once a user clicks "Get App Now" on the [apps.com](https://apps.com) website, after you publish your app.
-
-## Scope
-
-It is important to ensure that the scopes your are requesting match the scopes allowed on the Developer Portal.  For this sample app to work by default, your app on Developer Portal must support Accounting scopes.  If you'd like to support both Accounting and Payment, simply add the`com.intuit.quickbooks.payment` scope in the `application.properties` file.
-
 ## Storing the tokens
 This app stores all the tokens and user information in the session. For production ready app, tokens should be encrypted and stored in a database.
 
-## Discovery document
-The app calls the discovery API during starup and loads all the endpoint urls. For production ready app, make sure to run this API once a day to get the latest urls.
+## Appendix
 
-[ss1]: https://help.developer.intuit.com/s/samplefeedback?cid=9010&repoName=OAuth2-Java
+### All Review Board Resources
+
+```
+Ability to perform HTTP GET on the change resource
+Ability to perform HTTP GET on the file_attachment_comment resource
+Ability to perform HTTP POST on the hosting_service_account resource
+Ability to perform HTTP POST on the diff_validation resource
+Ability to perform HTTP DELETE on the webhook resource
+Ability to perform HTTP DELETE on the repository resource
+Ability to perform HTTP GET on the group resource
+Ability to perform HTTP POST on the user resource
+Ability to perform HTTP DELETE on the review_request resource
+Ability to perform HTTP GET on the screenshot resource
+Ability to perform HTTP GET on the review_group_user resource
+Ability to perform HTTP PUT, POST on the user_file_attachment resource
+Ability to perform HTTP POST on the review_group_user resource
+Ability to perform HTTP GET on the user_file_attachment resource
+Ability to perform HTTP DELETE on the oauth_app resource
+Ability to perform HTTP PUT, POST on the file_attachment resource
+Ability to perform HTTP PUT on the draft_file resource
+Ability to perform HTTP PUT, POST on the screenshot_comment resource
+Ability to perform HTTP GET on the diff resource
+Ability to perform HTTP PUT, POST on the review resource
+Ability to perform HTTP GET on the diff_comment resource
+Ability to perform HTTP DELETE on the user_file_attachment resource
+Ability to perform HTTP DELETE on the review_group_user resource
+Ability to perform HTTP DELETE on the screenshot resource
+Ability to perform HTTP POST on the watched_review_group resource
+Ability to perform HTTP GET on the reply resource
+Ability to perform HTTP DELETE on the screenshot_comment resource
+Ability to perform HTTP PUT, POST on the general_comment resource
+Ability to perform HTTP GET on the diff_file_attachment resource
+Ability to perform HTTP PUT, POST on the file_attachment_comment resource
+Ability to perform HTTP GET on the file_attachment_comment resource
+Ability to perform HTTP GET on the file_attachment_comment resource
+Ability to perform HTTP PUT, POST on the draft_file_attachment resource
+Ability to perform HTTP GET on the hosting_service_account resource
+Ability to perform HTTP PUT, POST on the review_request resource
+Ability to perform HTTP DELETE on the file_attachment_comment resource
+Ability to perform HTTP DELETE on the general_comment resource
+Ability to perform HTTP PUT, POST on the diff_comment resource
+Ability to perform HTTP PUT, POST on the diff resource
+Ability to perform HTTP GET on the watched_review_request resource
+Ability to perform HTTP GET on the screenshot_comment resource
+Ability to perform HTTP PUT, POST on the repository resource
+Ability to perform HTTP GET on the draft_diff resource
+Ability to perform HTTP PUT on the extension resource
+Ability to perform HTTP GET on the commits resource
+Ability to perform HTTP GET on the reply_draft resource
+Ability to perform HTTP GET on the patched_file resource
+Ability to perform HTTP GET on the file resource
+Ability to perform HTTP GET on the draft_screenshot resource
+Ability to perform HTTP GET on the diff_comment resource
+Ability to perform HTTP DELETE on the watched_review_request resource
+Ability to perform HTTP GET on the screenshot_comment resource
+Ability to perform HTTP PUT, POST on the oauth_app resource
+Ability to perform HTTP PUT, POST on the default_reviewer resource
+Ability to perform HTTP GET on the branches resource
+Ability to perform HTTP GET on the extension resource
+Ability to perform HTTP GET on the review_request resource
+Ability to perform HTTP DELETE on the reply resource
+Ability to perform HTTP GET on the screenshot_comment resource
+Ability to perform HTTP DELETE on the archived_review_request resource
+Ability to perform HTTP DELETE on the diff_comment resource
+Ability to perform HTTP GET on the original_file resource
+Ability to perform HTTP GET on the oauth_app resource
+Ability to perform HTTP GET on the draft_file_attachment resource
+Ability to perform HTTP DELETE on the draft_screenshot resource
+Ability to perform HTTP GET on the draft resource
+Ability to perform HTTP GET on the session resource
+Ability to perform HTTP DELETE on the file_attachment resource
+Ability to perform HTTP DELETE on the status_update resource
+Ability to perform HTTP GET on the user resource
+Ability to perform HTTP DELETE on the group resource
+Ability to perform HTTP GET on the remote_repository resource
+Ability to perform HTTP PUT, POST on the file_attachment_comment resource
+Ability to perform HTTP DELETE on the general_comment resource
+Ability to perform HTTP GET on the watched_review_group resource
+Ability to perform HTTP DELETE on the muted_review_request resource
+Ability to perform HTTP GET on the draft_original_file resource
+Ability to perform HTTP DELETE on the draft resource
+Ability to perform HTTP POST on the muted_review_request resource
+Ability to perform HTTP PUT, POST on the screenshot_comment resource
+Ability to perform HTTP DELETE on the session resource
+Ability to perform HTTP POST on the archived_review_request resource
+Ability to perform HTTP GET on the webhook resource
+Ability to perform HTTP PUT, POST on the draft_diff resource
+Ability to perform HTTP DELETE on the review resource
+Ability to perform HTTP POST on the watched_review_request resource
+Ability to perform HTTP DELETE on the file_attachment_comment resource
+Ability to perform HTTP PUT, POST on the draft_screenshot resource
+Ability to perform HTTP GET on the validation resource
+Ability to perform HTTP GET on the search resource
+Ability to perform HTTP PUT, POST on the reply resource
+Ability to perform HTTP GET on the info resource
+Ability to perform HTTP GET on the status_update resource
+Ability to perform HTTP GET on the file_attachment resource
+Ability to perform HTTP PUT, POST on the general_comment resource
+Ability to perform HTTP DELETE on the default_reviewer resource
+Ability to perform HTTP GET on the last_update resource
+Ability to perform HTTP GET on the draft_file resource
+Ability to perform HTTP GET on the diff_comment resource
+Ability to perform HTTP DELETE on the screenshot_comment resource
+Ability to perform HTTP GET on the root resource
+Ability to perform HTTP GET on the default_reviewer resource
+Ability to perform HTTP GET on the info resource
+Ability to perform HTTP DELETE on the draft_file_attachment resource
+Ability to perform HTTP GET on the review resource
+Ability to perform HTTP PUT, POST on the status_update resource
+Ability to perform HTTP PUT on the file resource
+Ability to perform HTTP PUT, POST on the screenshot resource
+Ability to perform HTTP GET on the general_comment resource
+Ability to perform HTTP PUT, POST on the diff_comment resource
+Ability to perform HTTP GET on the watched resource
+Ability to perform HTTP GET on the draft_patched_file resource
+Ability to perform HTTP PUT, POST on the webhook resource
+Ability to perform HTTP GET on the repository resource
+Ability to perform HTTP GET on the review_draft resource
+Ability to perform HTTP GET on the diff_context resource
+Ability to perform HTTP GET on the diff_validation resource
+Ability to perform HTTP PUT, POST on the draft resource
+Ability to perform HTTP GET on the hosting_service resource
+Ability to perform HTTP PUT, POST on the group resource
+Ability to perform HTTP GET on the general_comment resource
+Ability to perform HTTP DELETE on the diff_comment resource
+Ability to perform HTTP DELETE on the watched_review_group resource
+```

@@ -18,33 +18,29 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
         "expires_in",
-        "id_token",
         "refresh_token",
-        "x_refresh_token_expires_in",
         "access_token",
-        "token_type"
+        "token_type",
+        "scope"
 })
 @Component
-public class BearerTokenResponse {
+public class AccessToken {
 
     @JsonProperty("expires_in")
     private Long expiresIn;
-    
-    @JsonProperty("id_token")
-    private String idToken;
-    
+
     @JsonProperty("refresh_token")
     private String refreshToken;
-    
-    @JsonProperty("x_refresh_token_expires_in")
-    private Long xRefreshTokenExpiresIn;
-    
+
     @JsonProperty("access_token")
     private String accessToken;
-   
+
     @JsonProperty("token_type")
     private String tokenType;
-    
+
+    @JsonProperty("scope")
+    private String scope;
+
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -68,25 +64,6 @@ public class BearerTokenResponse {
         this.expiresIn = expiresIn;
     }
 
-    /**
-     *
-     * @return
-     * The idToken
-     */
-    @JsonProperty("id_token")
-    public String getIdToken() {
-        return idToken;
-    }
-
-    /**
-     *
-     * @param idToken
-     * The id_token
-     */
-    @JsonProperty("id_token")
-    public void setIdToken(String idToken) {
-        this.idToken = idToken;
-    }
 
     /**
      *
@@ -106,26 +83,6 @@ public class BearerTokenResponse {
     @JsonProperty("refresh_token")
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
-    }
-
-    /**
-     *
-     * @return
-     * The xRefreshTokenExpiresIn
-     */
-    @JsonProperty("x_refresh_token_expires_in")
-    public Long getXRefreshTokenExpiresIn() {
-        return xRefreshTokenExpiresIn;
-    }
-
-    /**
-     *
-     * @param xRefreshTokenExpiresIn
-     * The x_refresh_token_expires_in
-     */
-    @JsonProperty("x_refresh_token_expires_in")
-    public void setXRefreshTokenExpiresIn(Long xRefreshTokenExpiresIn) {
-        this.xRefreshTokenExpiresIn = xRefreshTokenExpiresIn;
     }
 
     /**
@@ -156,6 +113,26 @@ public class BearerTokenResponse {
     @JsonProperty("token_type")
     public String getTokenType() {
         return tokenType;
+    }
+
+    /**
+     *
+     * @param accessToken
+     * The access_token
+     */
+    @JsonProperty("scope")
+    public void setScope(String scope) {
+        this.scope = scope;
+    }
+
+    /**
+     *
+     * @return
+     * The tokenType
+     */
+    @JsonProperty("scope")
+    public String getScope() {
+        return scope;
     }
 
     /**
